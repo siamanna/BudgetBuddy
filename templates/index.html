@@ -3,49 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Expense Tracker</title>
+    <title>Budget Buddy</title>
+    <link rel="stylesheet" href="style.css">
     <script defer src="/__/firebase/11.1.0/firebase-app-compat.js"></script>
     <script defer src="/__/firebase/11.1.0/firebase-database-compat.js"></script>
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-      body {
-        background: #f4f4f9;
-        color: #333;
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-      }
-      .container {
-        max-width: 800px;
-        margin: 20px auto;
-        padding: 20px;
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-      h1 {
-        text-align: center;
-      }
-      form {
-        margin-bottom: 20px;
-      }
-      input, select, button {
-        display: block;
-        width: 100%;
-        margin-bottom: 10px;
-        padding: 10px;
-        font-size: 16px;
-      }
-      canvas {
-        max-width: 100%;
-        margin-top: 20px;
-      }
-    </style>
+    <script defer src="script.js"></script>
   </head>
   <body>
     <div class="container">
-      <h1>Expense Tracker</h1>
+      <h1>Budget Buddy</h1>
 
       <!-- Expense Logging Form -->
       <form id="expense-form">
@@ -60,62 +28,24 @@
         <button type="submit">Add Expense</button>
       </form>
 
+      <!-- CSV Upload -->
+      <div id="csv-upload">
+        <h2>Upload Expenses (CSV)</h2>
+        <input type="file" id="csv-file" accept=".csv" />
+        <button id="upload-btn">Upload</button>
+      </div>
+
       <!-- Dashboard -->
       <div id="dashboard">
         <h2>Spending Summary</h2>
         <canvas id="expense-chart"></canvas>
       </div>
+
+      <div id="recommendations">
+        <h2>Budget Recommendations</h2>
+        <ul id="recommendations-list"></ul>
+      </div>
+      
     </div>
-
-    <script>
-      // Firebase Realtime Database Setup
-      const database = firebase.database();
-
-      // Expense Form Handling
-      const form = document.getElementById('expense-form');
-      form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const name = document.getElementById('expense-name').value;
-        const amount = parseFloat(document.getElementById('expense-amount').value);
-        const category = document.getElementById('expense-category').value;
-
-        // Push to Firebase
-        database.ref('expenses/').push({ name, amount, category });
-        form.reset();
-      });
-
-      // Fetch and Display Data
-      const ctx = document.getElementById('expense-chart').getContext('2d');
-      const chartData = { labels: [], data: [] };
-
-      const updateChart = () => {
-        new Chart(ctx, {
-          type: 'pie',
-          data: {
-            labels: chartData.labels,
-            datasets: [{
-              label: 'Spending by Category',
-              data: chartData.data,
-              backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#AA65CC'],
-            }]
-          }
-        });
-      };
-
-      database.ref('expenses/').on('value', (snapshot) => {
-        const data = snapshot.val();
-        const categories = {};
-
-        // Aggregate Data by Category
-        for (let id in data) {
-          const expense = data[id];
-          categories[expense.category] = (categories[expense.category] || 0) + expense.amount;
-        }
-
-        chartData.labels = Object.keys(categories);
-        chartData.data = Object.values(categories);
-        updateChart();
-      });
-    </script>
   </body>
 </html>
