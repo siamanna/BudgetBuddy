@@ -1,51 +1,66 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Budget Buddy</title>
-    <link rel="stylesheet" href="style.css">
-    <script defer src="/__/firebase/11.1.0/firebase-app-compat.js"></script>
-    <script defer src="/__/firebase/11.1.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script defer src="script.js"></script>
-  </head>
-  <body>
-    <div class="container">
-      <h1>Budget Buddy</h1>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Budget Buddy</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="/__/firebase/11.1.0/firebase-app-compat.js"></script>
+  <script defer src="/__/firebase/11.1.0/firebase-database-compat.js"></script>
+  <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Budget Buddy</h1>
 
-      <!-- Expense Logging Form -->
-      <form id="expense-form">
-        <input type="text" id="expense-name" placeholder="Expense Name" required />
-        <input type="number" id="expense-amount" placeholder="Amount (USD)" required />
-        <select id="expense-category">
-          <option value="Food">Food</option>
-          <option value="Transport">Transport</option>
-          <option value="Entertainment">Entertainment</option>
-          <option value="Other">Other</option>
-        </select>
-        <button type="submit">Add Expense</button>
-      </form>
+    <!-- Expense Logging Form -->
+    <form id="expense-form">
+      <input type="text" id="expense-name" placeholder="Expense Name" required />
+      <input type="number" id="expense-amount" placeholder="Amount (USD)" required />
+      <select id="expense-category">
+        <option value="Food">Food</option>
+        <option value="Transport">Transport</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="Other">Other</option>
+      </select>
+      <button type="submit">Add Expense</button>
+    </form>
 
-      <!-- CSV Upload -->
-      <div id="csv-upload">
-        <h2>Upload Expenses (CSV)</h2>
-        <input type="file" id="csv-file" accept=".csv" />
-        <button id="upload-btn">Upload</button>
-      </div>
-
-      <!-- Dashboard -->
-      <div id="dashboard">
-        <h2>Spending Summary</h2>
-        <canvas id="expense-chart"></canvas>
-      </div>
-
-      <div id="recommendations">
-        <h2>Budget Recommendations</h2>
-        <ul id="recommendations-list"></ul>
-      </div>
-      
+    <!-- CSV Upload -->
+    <div id="csv-upload">
+      <h2>Upload Expenses (CSV)</h2>
+      <input type="file" id="csv-file" accept=".csv" />
+      <button id="upload-btn">Upload</button>
     </div>
-  </body>
+
+    <!-- Dashboard -->
+    <div id="dashboard">
+      <h2>Spending Summary</h2>
+      <canvas id="expense-chart"></canvas>
+    </div>
+
+    <!-- Recommendations -->
+    <div id="recommendations">
+      <h2>Budget Recommendations</h2>
+      <ul id="recommendation-list"></ul>
+    </div>
+
+    <div id="goal-setting">
+      <h2>Set Financial Goal</h2>
+      <form id="goal-form">
+        <input type="number" id="goal-amount" placeholder="Goal Amount (USD)" required />
+        <button type="submit">Set Goal</button>
+      </form>
+      <p id="goal-status"></p>
+    </div>
+    
+    <!-- Export Expenses -->
+    <div id="export-expenses">
+      <h2>Export Expenses</h2>
+      <button id="export-btn">Export to CSV</button>
+    </div>
+  </div>
+</body>
 </html>

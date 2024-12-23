@@ -1,33 +1,158 @@
+/* General Styles */
 body {
-    background: #f4f4f9;
+    background: linear-gradient(to bottom right, #e3f2fd, #f4f4f9);
     color: #333;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     margin: 0;
     padding: 0;
+    line-height: 1.6;
   }
+  
+  /* Container */
   .container {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s;
   }
-  h1, h2 {
+  
+  .container:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Headings */
+  h1 {
     text-align: center;
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
   }
-  form, #csv-upload {
+  
+  h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #34495e;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  /* Forms */
+  form {
     margin-bottom: 20px;
   }
+  
   input, select, button {
     display: block;
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
+    width: calc(100% - 20px);
+    margin: 10px auto;
+    padding: 12px 10px;
     font-size: 16px;
+    border: 1px solid #bdc3c7;
+    border-radius: 8px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border 0.3s, box-shadow 0.3s;
   }
+  
+  input:focus, select:focus, button:hover {
+    border: 1px solid #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+    outline: none;
+  }
+  
+  button {
+    background: #3498db;
+    color: #ffffff;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background 0.3s, transform 0.3s;
+  }
+  
+  button:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+  }
+  
+  button:active {
+    transform: translateY(0);
+  }
+  
+  /* Recommendations */
+  #recommendation-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #recommendation-list li {
+    background: #dff9fb;
+    color: #2c3e50;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    border-left: 5px solid #1abc9c;
+    font-size: 1rem;
+    transition: transform 0.3s, background 0.3s;
+  }
+  
+  #recommendation-list li:hover {
+    background: #c7ecee;
+    transform: translateX(5px);
+  }
+  
+  /* Canvas */
   canvas {
     max-width: 100%;
     margin-top: 20px;
+    border-radius: 8px;
+    border: 1px solid #ecf0f1;
   }
+  
+  /* Goal Setting */
+  #goal-setting, #export-expenses {
+    margin-bottom: 20px;
+  }
+  
+  #goal-status {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px;
+  }
+  
+  #goal-status.success {
+    color: #2d8659;
+    background: #e8f5e9;
+  }
+  
+  #goal-status.exceeded {
+    color: #e74c3c;
+    background: #fdecea;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .container {
+      padding: 15px;
+    }
+  
+    h1 {
+      font-size: 2rem;
+    }
+  
+    h2 {
+      font-size: 1.5rem;
+    }
+  
+    input, select, button {
+      width: 100%;
+    }
+  }
+  
+  
   
