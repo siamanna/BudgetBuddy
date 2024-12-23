@@ -1,6 +1,6 @@
 /* General Styles */
 body {
-    background: linear-gradient(to bottom right, #e3f2fd, #f4f4f9);
+    background: linear-gradient(to bottom right, #f0f4f8, #e3f2fd);
     color: #333;
     font-family: 'Roboto', Arial, sans-serif;
     margin: 0;
@@ -12,11 +12,11 @@ body {
   .container {
     max-width: 800px;
     margin: 20px auto;
-    padding: 20px;
+    padding: 30px;
     background: #ffffff;
     border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    transition: box-shadow 0.3s;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
   }
   
   .container:hover {
@@ -28,7 +28,7 @@ body {
     text-align: center;
     font-size: 2.5rem;
     color: #2c3e50;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
   
   h2 {
@@ -49,12 +49,12 @@ body {
     display: block;
     width: calc(100% - 20px);
     margin: 10px auto;
-    padding: 12px 10px;
+    padding: 12px 15px;
     font-size: 16px;
     border: 1px solid #bdc3c7;
     border-radius: 8px;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-    transition: border 0.3s, box-shadow 0.3s;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
   }
   
   input:focus, select:focus, button:hover {
@@ -69,7 +69,8 @@ body {
     cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition: background 0.3s, transform 0.3s;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.3s ease;
   }
   
   button:hover {
@@ -91,11 +92,11 @@ body {
     background: #dff9fb;
     color: #2c3e50;
     margin: 10px 0;
-    padding: 10px;
+    padding: 12px 15px;
     border-radius: 8px;
     border-left: 5px solid #1abc9c;
     font-size: 1rem;
-    transition: transform 0.3s, background 0.3s;
+    transition: transform 0.3s ease, background 0.3s ease;
   }
   
   #recommendation-list li:hover {
@@ -103,7 +104,7 @@ body {
     transform: translateX(5px);
   }
   
-  /* Canvas */
+  /* Spending Chart */
   canvas {
     max-width: 100%;
     margin-top: 20px;
@@ -123,6 +124,8 @@ body {
     padding: 10px;
     text-align: center;
     border-radius: 8px;
+    background: #f8f9fa;
+    transition: background 0.3s ease, color 0.3s ease;
   }
   
   #goal-status.success {
@@ -135,10 +138,20 @@ body {
     background: #fdecea;
   }
   
+  /* CSV Upload Section */
+  #csv-upload {
+    text-align: center;
+  }
+  
+  #csv-upload input {
+    display: inline-block;
+    width: auto;
+  }
+  
   /* Responsive Design */
   @media (max-width: 600px) {
     .container {
-      padding: 15px;
+      padding: 20px;
     }
   
     h1 {
@@ -153,6 +166,4 @@ body {
       width: 100%;
     }
   }
-  
-  
   
